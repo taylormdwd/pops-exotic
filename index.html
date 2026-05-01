@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop's Exotic Sodas & Snacks | Mesa, AZ</title>
+    <meta name="description" content="Don't be borin'. Try something foreign. Exotic sodas, international snacks, and rare treats from around the world. Shop online or visit us in Mesa, AZ.">
+    <link rel="stylesheet" href="styles.css?v=20260429d">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@600;700&family=Fraunces:ital,wght@1,900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
+    <!-- Snipcart Stylesheet (uncomment when API key is added)
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css" />
+    -->
+</head>
+<body>
+
+    <!-- Intro overlay — rendered in initial HTML to prevent flash.
+         JS moves #brand-logo into here for the opening animation,
+         then Flip returns it to the nav slot. -->
+    <div class="intro-overlay" id="intro-overlay">
+        <div class="intro-blob green"></div>
+        <div class="intro-blob yellow"></div>
+        <div class="intro-blob orange"></div>
+        <div class="intro-blob purple"></div>
+    </div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar tropical-nav" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand-group" id="nav-logo-anchor" aria-label="Pops Exotic home">
+                <img id="brand-logo" src="images/pops-logo.jpg" alt="Pop's Exotic Sodas &amp; Snacks">
+                <span class="brand-wordmark">Pops Exotic</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#origins">Origins</a></li>
+                <li><a href="#drops">Drops</a></li>
+                <li><a href="#faq">Support</a></li>
+                <li><a href="#" class="cart-btn" data-cart-trigger>
+                    Cart (<span class="snipcart-items-count">0</span>)
+                </a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==================== TROPICAL NIGHT MARKET HERO ==================== -->
+    <section class="tropical-hero" id="hero">
+        <div class="tropical-hero-grid">
+            <div class="t-text">
+                <span class="t-eyebrow">Mesa's #1 Exotic Snack Shop</span>
+                <h1 class="t-headline">
+                    <span class="line">Eat</span>
+                    <span class="line">Something</span>
+                    <span class="line foreign">Foreign.</span>
+                </h1>
+                <p class="t-tagline">Rare candies, drinks, and snacks sourced from Tokyo, Trinidad, Bangkok, Lagos, and beyond. Delivered to your door in 2 days.</p>
+                <div class="t-cta-row">
+                    <a href="#shop" class="t-cta primary">Shop Imports <span class="arrow">&rarr;</span></a>
+                    <a href="#drops" class="t-cta ghost">See This Week's Drops</a>
+                </div>
+                <div class="t-social-proof">
+                    <span class="t-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                    <span>4.9 rating from 2,400+ snack explorers</span>
+                </div>
+            </div>
+            <div class="t-cluster">
+                <!-- Filler decorations (CSS-only stand-ins for missing PNG cutouts) -->
+                <div class="t-stamp s-1">Imported<br>Mesa AZ</div>
+                <div class="t-stamp s-2">Air Mail<br>Pops Co.</div>
+                <span class="t-script sc-1" aria-hidden="true">&#27849;</span>
+                <span class="t-script sc-2" aria-hidden="true">&#52768;</span>
+                <span class="t-script sc-3" aria-hidden="true">&#3650;&#3588;&#3621;&#3634;</span>
+
+                <!-- Products with country flag badges (original 4) -->
+                <div class="ci c-tl">
+                    <span class="t-flag-badge" aria-label="Trinidad">&#127481;&#127481;</span>
+                    <img src="images/tahitian-treat.png" alt="Tahitian Treat">
+                </div>
+                <div class="ci c-tr">
+                    <span class="t-flag-badge" aria-label="USA">&#127482;&#127480;</span>
+                    <img src="images/gushers.png" alt="Gushers">
+                </div>
+                <div class="ci c-center">
+                    <span class="t-flag-badge" aria-label="USA">&#127482;&#127480;</span>
+                    <img src="images/snapple.png" alt="Snapple">
+                </div>
+                <div class="ci c-bl">
+                    <span class="t-flag-badge" aria-label="South Korea">&#127472;&#127479;</span>
+                    <img src="images/sour-patch-popcorn.png" alt="Sour Patch Popcorn">
+                </div>
+
+                <!-- 5th product — Nestle Jungly, bottom-right, floats behind Snapple -->
+                <div class="ci c-br" style="animation: float-slow 8s ease-in-out infinite 1.8s; --rot: -6deg;">
+                    <span class="t-flag-badge" aria-label="Spain">&#127466;&#127480;</span>
+                    <img src="images/products/nestle-jungly.png" alt="Nestle Jungly white chocolate bar from Spain">
+                </div>
+
+                <!-- Origin pill stickers -->
+                <span class="t-origin-pill op-1">Tokyo</span>
+                <span class="t-origin-pill op-2">Bangkok</span>
+                <span class="t-origin-pill op-3">Trinidad</span>
+                <span class="t-origin-pill op-4">Lagos</span>
+                <span class="t-origin-pill op-madrid">Madrid</span>
+
+                <!-- Sparkles -->
+                <span class="t-sparkle sp-1"></span>
+                <span class="t-sparkle sp-2"></span>
+                <span class="t-sparkle sp-3"></span>
+                <!-- Sparkles clustered around the Jungly (white) -->
+                <span class="t-sparkle sp-4"></span>
+                <span class="t-sparkle sp-5"></span>
+                <span class="t-sparkle sp-6"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MARQUEE STRIP (cities) ==================== -->
+    <div class="t-marquee" aria-hidden="true">
+        <div class="t-marquee-track">
+            <span>TOKYO</span><span class="star">&#9733;</span>
+            <span>TRINIDAD</span><span class="star">&#9733;</span>
+            <span>MEXICO CITY</span><span class="star">&#9733;</span>
+            <span>BANGKOK</span><span class="star">&#9733;</span>
+            <span>LAGOS</span><span class="star">&#9733;</span>
+            <span>SEOUL</span><span class="star">&#9733;</span>
+            <span>MANILA</span><span class="star">&#9733;</span>
+            <span>CAIRO</span><span class="star">&#9733;</span>
+            <span>LIMA</span><span class="star">&#9733;</span>
+            <span>MUMBAI</span><span class="star">&#9733;</span>
+            <!-- duplicated for seamless loop -->
+            <span>TOKYO</span><span class="star">&#9733;</span>
+            <span>TRINIDAD</span><span class="star">&#9733;</span>
+            <span>MEXICO CITY</span><span class="star">&#9733;</span>
+            <span>BANGKOK</span><span class="star">&#9733;</span>
+            <span>LAGOS</span><span class="star">&#9733;</span>
+            <span>SEOUL</span><span class="star">&#9733;</span>
+            <span>MANILA</span><span class="star">&#9733;</span>
+            <span>CAIRO</span><span class="star">&#9733;</span>
+            <span>LIMA</span><span class="star">&#9733;</span>
+            <span>MUMBAI</span><span class="star">&#9733;</span>
+        </div>
+    </div>
+
+    <!-- ==================== VALUE PROP — editorial passport layout ==================== -->
+    <section class="t-value-strip">
+        <div class="value-editorial">
+            <!-- Dotted flight path connecting the three stats -->
+            <svg class="route-line" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M 40 20 Q 300 -6, 600 20 T 1160 20"
+                      stroke="currentColor" stroke-width="2.5" stroke-dasharray="2 10"
+                      stroke-linecap="round" fill="none"/>
+            </svg>
+
+            <div class="ve-cell ve-1">
+                <span class="ve-stamp" aria-hidden="true">Mesa<br>Pops Co<br>Imported</span>
+                <span class="ve-num">40<sup>+</sup></span>
+                <span class="ve-kicker">Countries on shelves</span>
+                <p class="ve-body">Hand-sourced direct from importers and local distributors across 40+ countries.</p>
+            </div>
+
+            <div class="ve-cell ve-2">
+                <span class="ve-stamp" aria-hidden="true">Air Mail<br>Pops Co<br>Priority</span>
+                <span class="ve-num">2<em>Day</em></span>
+                <span class="ve-kicker">Ships nationwide</span>
+                <p class="ve-body">Flat-rate delivery to every state in the lower 48. Free pickup at the Mesa shop.</p>
+            </div>
+
+            <div class="ve-cell ve-3">
+                <span class="ve-stamp" aria-hidden="true">&#9733; Weekly<br>9AM MST<br>Drop Zone</span>
+                <span class="ve-num">Fri<em>9am</em></span>
+                <span class="ve-kicker">New drops weekly</span>
+                <p class="ve-body">Rare finds hit the shop every Friday at 9am Mountain time. Blink and they&rsquo;re gone.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== THIS WEEK'S DROPS ==================== -->
+    <section class="t-drops" id="drops">
+        <div class="t-drops-head">
+            <span class="label">Fresh In —</span>
+            <h2 class="title">This Week's Drops</h2>
+        </div>
+        <div class="drops-wrapper">
+            <button class="drops-nav drops-prev" aria-label="Previous">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="t-drops-rail drops-row">
+            <div class="t-drop-card">
+                <span class="flag" aria-label="Japan">&#127471;&#127477;</span>
+                <span class="new-tag">New</span>
+                <div class="img-wrap"><img src="images/snapple.png" alt=""></div>
+                <p class="name">Fanta Shikuwasa</p>
+                <p class="price">$6.00</p>
+                <div class="add-wrap"><button class="add" data-add-cart data-id="drop-fanta-shikuwasa" data-name="Fanta Shikuwasa" data-price="6.00" data-category="Exotic Sodas" data-image="images/snapple.png">Add to Cart</button></div>
+            </div>
+            <div class="t-drop-card">
+                <span class="flag" aria-label="Trinidad">&#127481;&#127481;</span>
+                <span class="new-tag">New</span>
+                <div class="img-wrap"><img src="images/tahitian-treat.png" alt=""></div>
+                <p class="name">Tahitian Treat</p>
+                <p class="price">$5.00</p>
+                <div class="add-wrap"><button class="add" data-add-cart data-id="drop-tahitian-treat" data-name="Tahitian Treat" data-price="5.00" data-category="Exotic Sodas" data-image="images/tahitian-treat.png">Add to Cart</button></div>
+            </div>
+            <div class="t-drop-card">
+                <span class="flag" aria-label="South Korea">&#127472;&#127479;</span>
+                <span class="new-tag">New</span>
+                <div class="img-wrap"><img src="images/sour-patch-popcorn.png" alt=""></div>
+                <p class="name">Honey Chili Doritos</p>
+                <p class="price">$8.00</p>
+                <div class="add-wrap"><button class="add" data-add-cart data-id="drop-honey-chili-doritos" data-name="Honey Chili Doritos" data-price="8.00" data-category="International Chips" data-image="images/sour-patch-popcorn.png">Add to Cart</button></div>
+            </div>
+            <div class="t-drop-card">
+                <span class="flag" aria-label="USA">&#127482;&#127480;</span>
+                <span class="new-tag">New</span>
+                <div class="img-wrap"><img src="images/gushers.png" alt=""></div>
+                <p class="name">Throwback Gushers</p>
+                <p class="price">$4.00</p>
+                <div class="add-wrap"><button class="add" data-add-cart data-id="drop-throwback-gushers" data-name="Throwback Gushers" data-price="4.00" data-category="Nostalgic Favorites" data-image="images/gushers.png">Add to Cart</button></div>
+            </div>
+            <div class="t-drop-card">
+                <span class="flag" aria-label="Mexico">&#127474;&#127485;</span>
+                <span class="new-tag">New</span>
+                <div class="img-wrap"><img src="images/snapple.png" alt=""></div>
+                <p class="name">Jarritos Tamarindo</p>
+                <p class="price">$3.50</p>
+                <div class="add-wrap"><button class="add" data-add-cart data-id="drop-jarritos-tamarindo" data-name="Jarritos Tamarindo" data-price="3.50" data-category="Exotic Sodas" data-image="images/snapple.png">Add to Cart</button></div>
+            </div>
+            <div class="t-drop-card">
+                <span class="flag" aria-label="Thailand">&#127481;&#127469;</span>
+                <span class="new-tag">New</span>
+                <div class="img-wrap"><img src="images/tahitian-treat.png" alt=""></div>
+                <p class="name">Squid Flavor Lay's</p>
+                <p class="price">$7.00</p>
+                <div class="add-wrap"><button class="add" data-add-cart data-id="drop-squid-lays" data-name="Squid Flavor Lay's" data-price="7.00" data-category="International Chips" data-image="images/tahitian-treat.png">Add to Cart</button></div>
+            </div>
+            </div><!-- /.t-drops-rail -->
+            <button class="drops-nav drops-next" aria-label="Next">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+        </div><!-- /.drops-wrapper -->
+    </section>
+
+    <!-- ==================== SHOP BY ORIGIN ==================== -->
+    <section class="t-origins" id="origins" style="position: relative; overflow: hidden;">
+        <!-- Marquee is the FIRST child, in-flow band at the top of the section -->
+        <div class="origins-marquee" aria-hidden="true">
+            <span class="origins-marquee-track">HOLA&nbsp;&nbsp;&#8226;&nbsp;&nbsp;KONNICHIWA&nbsp;&nbsp;&#8226;&nbsp;&nbsp;SAWASDEE&nbsp;&nbsp;&#8226;&nbsp;&nbsp;ANNYEONG&nbsp;&nbsp;&#8226;&nbsp;&nbsp;NDEWO&nbsp;&nbsp;&#8226;&nbsp;&nbsp;HELLO&nbsp;&nbsp;&#8226;&nbsp;&nbsp;HOLA&nbsp;&nbsp;&#8226;&nbsp;&nbsp;KONNICHIWA&nbsp;&nbsp;&#8226;&nbsp;&nbsp;SAWASDEE&nbsp;&nbsp;&#8226;&nbsp;&nbsp;ANNYEONG&nbsp;&nbsp;&#8226;&nbsp;&nbsp;NDEWO&nbsp;&nbsp;&#8226;&nbsp;&nbsp;HELLO&nbsp;&nbsp;&#8226;</span>
+        </div>
+        <h2 class="bloom-section-title" style="position: relative; z-index: 2;">Shop by Origin</h2>
+        <p class="bloom-section-sub" style="position: relative; z-index: 2;">Pick a flag, dig into the snacks. We import direct from these spots weekly.</p>
+        <div class="t-origins-grid">
+            <a class="t-origin-card" href="#shop" data-country="Japan">
+                <img class="flag-img" src="https://flagcdn.com/w320/jp.png" alt="Japan flag" loading="lazy">
+                <h3>Japan</h3>
+                <span class="shop-pill">Shop &rarr;</span>
+            </a>
+            <a class="t-origin-card" href="#shop" data-country="Mexico">
+                <img class="flag-img" src="https://flagcdn.com/w320/mx.png" alt="Mexico flag" loading="lazy">
+                <h3>Mexico</h3>
+                <span class="shop-pill">Shop &rarr;</span>
+            </a>
+            <a class="t-origin-card" href="#shop" data-country="Trinidad">
+                <img class="flag-img" src="https://flagcdn.com/w320/tt.png" alt="Trinidad &amp; Tobago flag" loading="lazy">
+                <h3>Trinidad</h3>
+                <span class="shop-pill">Shop &rarr;</span>
+            </a>
+            <a class="t-origin-card" href="#shop" data-country="Thailand">
+                <img class="flag-img" src="https://flagcdn.com/w320/th.png" alt="Thailand flag" loading="lazy">
+                <h3>Thailand</h3>
+                <span class="shop-pill">Shop &rarr;</span>
+            </a>
+            <a class="t-origin-card" href="#shop" data-country="Nigeria">
+                <img class="flag-img" src="https://flagcdn.com/w320/ng.png" alt="Nigeria flag" loading="lazy">
+                <h3>Nigeria</h3>
+                <span class="shop-pill">Shop &rarr;</span>
+            </a>
+            <a class="t-origin-card" href="#shop" data-country="South Korea">
+                <img class="flag-img" src="https://flagcdn.com/w320/kr.png" alt="South Korea flag" loading="lazy">
+                <h3>South Korea</h3>
+                <span class="shop-pill">Shop &rarr;</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ==================== PRODUCTS (SHOP) ==================== -->
+    <section class="shop section-with-drips" id="shop">
+        <!-- Cream gradient base layer (z:0) -->
+        <div class="shop-base" aria-hidden="true"></div>
+        <!-- Drip video, two copies offset by half the clip so the loop cut of
+             one is hidden behind the middle of the other (see CSS crossfade).
+             Pinned to bottom 60% with magenta hue-rotate tint + 200px top mask. -->
+        <div class="drip-video" aria-hidden="true">
+            <video class="drip-a" muted loop playsinline preload="auto">
+                <source src="videos/drip.mp4" type="video/mp4">
+            </video>
+            <video class="drip-b" muted loop playsinline preload="auto">
+                <source src="videos/drip.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="container">
+            <h2 class="section-title">Shop</h2>
+            <p class="section-subtitle">What's in stock right now</p>
+
+            <!-- Filter Buttons -->
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterProducts('All')">All</button>
+                <button class="filter-btn" onclick="filterProducts('Exotic Sodas')">Sodas</button>
+                <button class="filter-btn" onclick="filterProducts('International Chips')">Chips</button>
+                <button class="filter-btn" onclick="filterProducts('Sweet & Candy')">Candy</button>
+                <button class="filter-btn" onclick="filterProducts('Spicy Snacks')">Spicy</button>
+                <button class="filter-btn" onclick="filterProducts('Mystery Boxes')">Mystery</button>
+                <button class="filter-btn" onclick="filterProducts('Nostalgic Favorites')">Nostalgic</button>
+            </div>
+
+            <!-- Country filter badge (shown when a flag tile has been clicked) -->
+            <div class="country-filter-badge" id="countryFilterBadge" style="display:none;" role="status">
+                <span id="countryFilterBadgeLabel">Filtered:</span>
+                <button class="country-filter-clear" type="button" data-clear-country aria-label="Clear country filter">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Product Grid (populated by JavaScript) -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products loaded dynamically from Google Sheets or demo data -->
+            </div>
+
+            <div class="products-loading" id="productsLoading">
+                <div class="loader"></div>
+                <p>Loading products...</p>
+            </div>
+
+            <div class="products-empty" id="productsEmpty" style="display:none;">
+                <p>No products in this category right now. Check back soon!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="bloom-faq" id="faq" style="position: relative; overflow: visible;">
+        <!-- Smonen Cream Soda — upper right (original props preserved) -->
+        <img class="floating-product md-only" src="images/products/smonen-pineapple.png" alt="Smonen Cream Soda pineapple can" aria-hidden="true" style="width:180px; top:40px; right:60px; z-index:1; --rot: 12deg; animation-duration: 7s;">
+        <!-- Mr. Pibb Puunchin' Peach — lower right, tilted sideways -->
+        <img class="floating-product md-only" src="images/products/mr-pibb-peach.png" alt="Mr. Pibb Puunchin' Peach can" style="width:160px; bottom:80px; right:60px; z-index:3; --rot: 18deg; animation-duration: 7s; animation-delay: 1.2s; opacity:1; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));">
+        <h2 class="bloom-section-title" style="font-size: clamp(36px, 5vw, 56px); margin-bottom: 8px; position: relative; z-index: 2;">Frequently Asked Questions</h2>
+        <p class="bloom-section-sub">Real answers about rare snacks.</p>
+        <div class="faq-grid" id="faqGrid">
+            <div class="faq-item">
+                <button class="faq-q" type="button" aria-expanded="false">
+                    <span class="faq-text">What makes Pop's Exotic different?</span>
+                    <span class="faq-icon" aria-hidden="true"><span class="plus">+</span><span class="minus">&minus;</span></span>
+                </button>
+                <div class="faq-a"><span>We hand-source rare snacks and sodas from 20+ countries &mdash; flavors you can't find at Target. Most arrive on shelves before they go viral on TikTok.</span></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" type="button" aria-expanded="false">
+                    <span class="faq-text">Do you ship nationwide?</span>
+                    <span class="faq-icon" aria-hidden="true"><span class="plus">+</span><span class="minus">&minus;</span></span>
+                </button>
+                <div class="faq-a"><span>Yes. We ship across all 50 states. Local Mesa pickup is also free at 244 N Country Club Dr.</span></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" type="button" aria-expanded="false">
+                    <span class="faq-text">Are your snacks halal or vegan?</span>
+                    <span class="faq-icon" aria-hidden="true"><span class="plus">+</span><span class="minus">&minus;</span></span>
+                </button>
+                <div class="faq-a"><span>Many are &mdash; every product page lists ingredients. Filter by dietary preference at checkout, or DM us for specifics.</span></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" type="button" aria-expanded="false">
+                    <span class="faq-text">How fresh are the imports?</span>
+                    <span class="faq-icon" aria-hidden="true"><span class="plus">+</span><span class="minus">&minus;</span></span>
+                </button>
+                <div class="faq-a"><span>We restock weekly and rotate inventory. Every product ships well within its best-by date or it's free.</span></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" type="button" aria-expanded="false">
+                    <span class="faq-text">Do you offer subscriptions?</span>
+                    <span class="faq-icon" aria-hidden="true"><span class="plus">+</span><span class="minus">&minus;</span></span>
+                </button>
+                <div class="faq-a"><span>Mystery Box subscriptions ship monthly &mdash; $40 of curated rares delivered to your door. Cancel anytime.</span></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" type="button" aria-expanded="false">
+                    <span class="faq-text">Where do the snacks come from?</span>
+                    <span class="faq-icon" aria-hidden="true"><span class="plus">+</span><span class="minus">&minus;</span></span>
+                </button>
+                <div class="faq-a"><span>Japan, South Korea, Trinidad, Egypt, Thailand, China, the Philippines, the UK, Mexico &mdash; and more being added every drop.</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== HOW IT WORKS (editorial redesign) ==================== -->
+    <section class="t-how" id="how-it-works">
+        <!-- Low-opacity italic marquee runs behind everything -->
+        <div class="how-marquee" aria-hidden="true">
+            <div class="how-marquee-track">
+                BROWSE&nbsp;&nbsp;&#8226;&nbsp;&nbsp;PACK&nbsp;&nbsp;&#8226;&nbsp;&nbsp;OPEN&nbsp;&nbsp;&#8226;&nbsp;&nbsp;REPEAT&nbsp;&nbsp;&#8226;&nbsp;&nbsp;BROWSE&nbsp;&nbsp;&#8226;&nbsp;&nbsp;PACK&nbsp;&nbsp;&#8226;&nbsp;&nbsp;OPEN&nbsp;&nbsp;&#8226;&nbsp;&nbsp;REPEAT&nbsp;&nbsp;&#8226;&nbsp;&nbsp;BROWSE&nbsp;&nbsp;&#8226;&nbsp;&nbsp;PACK&nbsp;&nbsp;&#8226;&nbsp;&nbsp;OPEN&nbsp;&nbsp;&#8226;&nbsp;&nbsp;REPEAT&nbsp;&nbsp;&#8226;
+            </div>
+        </div>
+
+        <!-- 3 circular watermark stamps with curved textPath -->
+        <svg class="how-stamp hs-a" viewBox="0 0 100 100" aria-hidden="true">
+            <defs><path id="howStampA" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"/></defs>
+            <circle class="ring" cx="50" cy="50" r="48"/>
+            <circle class="ring" cx="50" cy="50" r="42"/>
+            <text><textPath href="#howStampA">DIRECT FROM THE SOURCE &#9679; EST 2024 &#9679;</textPath></text>
+        </svg>
+        <svg class="how-stamp hs-b" viewBox="0 0 100 100" aria-hidden="true">
+            <defs><path id="howStampB" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"/></defs>
+            <circle class="ring" cx="50" cy="50" r="48"/>
+            <circle class="ring" cx="50" cy="50" r="42"/>
+            <text><textPath href="#howStampB">POPS EXOTIC MESA AZ &#9679; HAND PACKED &#9679;</textPath></text>
+        </svg>
+        <svg class="how-stamp hs-c" viewBox="0 0 100 100" aria-hidden="true">
+            <defs><path id="howStampC" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"/></defs>
+            <circle class="ring" cx="50" cy="50" r="48"/>
+            <circle class="ring" cx="50" cy="50" r="42"/>
+            <text><textPath href="#howStampC">RARE FINDS WEEKLY DROP &#9679; 9AM MST &#9679;</textPath></text>
+        </svg>
+
+        <!-- 3 steps with giant duotone numerals + sun-yellow dotted connector -->
+        <div class="how-steps">
+            <div class="how-step">
+                <span class="how-num">01</span>
+                <h3 class="how-title">Browse Rare Drops</h3>
+                <p class="how-desc">New imports every Friday. Filter by country, flavor, or what's about to sell out.</p>
+            </div>
+            <div class="how-step">
+                <span class="how-num">02</span>
+                <h3 class="how-title">Same-Day Pack</h3>
+                <p class="how-desc">Order before noon and we pack it the same day. Bubble-wrapped and tracking enabled.</p>
+            </div>
+            <div class="how-step">
+                <span class="how-num">03</span>
+                <h3 class="how-title">Open The Box</h3>
+                <p class="how-desc">Pop the lid on something you've never tasted before. Repeat weekly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== REVIEWS (video grid + written rail + IG CTA) ==================== -->
+    <!-- NOTE: Review videos currently use videos/drip.mp4 as a placeholder.
+         Drop the actual reel exports into videos/ (review-marisol.mp4,
+         review-dre.mp4, review-aria.mp4, review-jay.mp4) and update the
+         video <source> tags + data-instagram hrefs below. -->
+    <section class="t-reviews" id="reviews">
+        <div class="reviews-head">
+            <span class="t-reviews-eyebrow">As Seen On @popsexotic</span>
+            <h2 class="reviews-headline">Real Reactions</h2>
+            <p class="reviews-sub">Real customers, real reactions. Filmed live at the Mesa shop.</p>
+            <hr class="reviews-hairline">
+        </div>
+
+        <!-- Video testimonials grid -->
+        <div class="video-grid">
+            <div class="featured-video">
+                <video id="reviewVideoMain" autoplay muted loop playsinline
+                       aria-label="Customer reaction video from Pop's Exotic"
+                       poster="">
+                    <source src="videos/review-1.mp4" type="video/mp4">
+                </video>
+                <button class="video-ctl play-btn" type="button" id="reviewPlayBtn" aria-label="Pause video">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="icon-pause"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="icon-play" style="display:none;"><polygon points="7,5 19,12 7,19"/></svg>
+                </button>
+                <button class="video-ctl mute-btn" type="button" id="reviewMuteBtn" aria-label="Unmute video">
+                    <!-- Muted: speaker + slash -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="icon-mute">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <line x1="23" y1="9" x2="17" y2="15"></line>
+                        <line x1="17" y1="9" x2="23" y2="15"></line>
+                    </svg>
+                    <!-- Unmuted: speaker + two sound waves -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="icon-unmute" style="display:none;">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                    </svg>
+                </button>
+                <div class="video-name-card">
+                    <div>
+                        <p class="vn-name" id="reviewName">Recorded at Pop's Exotic</p>
+                        <p class="vn-meta" id="reviewMeta">Mesa, AZ &middot; Live reaction</p>
+                    </div>
+                    <a id="reviewIG" class="vn-ig" href="https://instagram.com/popsexotic" target="_blank" rel="noopener noreferrer">
+                        Watch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v7h-7"/><path d="M3 10V3h7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 4 thumbs total. The one matching the currently-featured video
+                 has class is-active and is hidden, so exactly 3 show at any time. -->
+            <div class="video-thumbs" id="reviewThumbs">
+                <button type="button" class="video-thumb is-active"
+                        data-id="v1" data-src="videos/review-1.mp4"
+                        data-name="Recorded at Pop's Exotic" data-location="Mesa, AZ" data-product="Live reaction"
+                        data-ig="https://instagram.com/popsexotic"
+                        aria-label="Play customer reaction video 1">
+                    <video muted loop playsinline preload="auto"><source src="videos/review-1.mp4" type="video/mp4"></video>
+                    <span class="thumb-badge" aria-hidden="true"></span>
+                    <span class="thumb-play" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="7,5 19,12 7,19"/></svg>
+                    </span>
+                    <span class="thumb-caption">
+                        <p>Reaction 1</p>
+                        <p class="thumb-loc">Mesa, AZ</p>
+                    </span>
+                </button>
+                <button type="button" class="video-thumb"
+                        data-id="v2" data-src="videos/review-2.mp4"
+                        data-name="Recorded at Pop's Exotic" data-location="Mesa, AZ" data-product="Live reaction"
+                        data-ig="https://instagram.com/popsexotic"
+                        aria-label="Play customer reaction video 2">
+                    <video muted loop playsinline preload="auto"><source src="videos/review-2.mp4" type="video/mp4"></video>
+                    <span class="thumb-badge" aria-hidden="true"></span>
+                    <span class="thumb-play" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="7,5 19,12 7,19"/></svg>
+                    </span>
+                    <span class="thumb-caption">
+                        <p>Reaction 2</p>
+                        <p class="thumb-loc">Mesa, AZ</p>
+                    </span>
+                </button>
+                <button type="button" class="video-thumb"
+                        data-id="v3" data-src="videos/review-3.mp4"
+                        data-name="Recorded at Pop's Exotic" data-location="Mesa, AZ" data-product="Live reaction"
+                        data-ig="https://instagram.com/popsexotic"
+                        aria-label="Play customer reaction video 3">
+                    <video muted loop playsinline preload="auto"><source src="videos/review-3.mp4" type="video/mp4"></video>
+                    <span class="thumb-badge" aria-hidden="true"></span>
+                    <span class="thumb-play" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="7,5 19,12 7,19"/></svg>
+                    </span>
+                    <span class="thumb-caption">
+                        <p>Reaction 3</p>
+                        <p class="thumb-loc">Mesa, AZ</p>
+                    </span>
+                </button>
+                <button type="button" class="video-thumb"
+                        data-id="v4" data-src="videos/review-4.mp4"
+                        data-name="Recorded at Pop's Exotic" data-location="Mesa, AZ" data-product="Live reaction"
+                        data-ig="https://instagram.com/popsexotic"
+                        aria-label="Play customer reaction video 4">
+                    <video muted loop playsinline preload="auto"><source src="videos/review-4.mp4" type="video/mp4"></video>
+                    <span class="thumb-badge" aria-hidden="true"></span>
+                    <span class="thumb-play" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="7,5 19,12 7,19"/></svg>
+                    </span>
+                    <span class="thumb-caption">
+                        <p>Reaction 4</p>
+                        <p class="thumb-loc">Mesa, AZ</p>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Written reviews rail -->
+        <div class="t-reviews-written">
+            <div class="written-head">
+                <h3>What people are saying</h3>
+            </div>
+            <div class="written-wrapper">
+                <button class="drops-nav drops-prev" id="wrPrev" aria-label="Previous reviews">
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <!-- Placeholder reviews — real names / locations to come in later. -->
+                <div class="written-rail" id="writtenRail">
+                    <div class="review-card">
+                        <span class="rc-pill">Fanta Shikuwasa</span>
+                        <span class="rc-stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        <p class="rc-quote">&ldquo;Ruined for regular soda. Pop's is the only place I trust for imports.&rdquo;</p>
+                        <div class="rc-who">
+                            <div class="rc-avatar">&#9679;<img class="rc-flag" src="https://flagcdn.com/w80/mx.png" alt="Mexico"></div>
+                            <div><p class="rc-name">Verified customer</p><p class="rc-meta">Shipped nationwide</p></div>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <span class="rc-pill">Honey Chili Doritos</span>
+                        <span class="rc-stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        <p class="rc-quote">&ldquo;Mystery box on a whim. Opened it like Christmas morning. Life-changing.&rdquo;</p>
+                        <div class="rc-who">
+                            <div class="rc-avatar">&#9679;<img class="rc-flag" src="https://flagcdn.com/w80/kr.png" alt="South Korea"></div>
+                            <div><p class="rc-name">Verified customer</p><p class="rc-meta">Shipped nationwide</p></div>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <span class="rc-pill">Tahitian Treat</span>
+                        <span class="rc-stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        <p class="rc-quote">&ldquo;Took me right back to grandma's kitchen. 10/10.&rdquo;</p>
+                        <div class="rc-who">
+                            <div class="rc-avatar">&#9679;<img class="rc-flag" src="https://flagcdn.com/w80/tt.png" alt="Trinidad"></div>
+                            <div><p class="rc-name">Verified customer</p><p class="rc-meta">Shipped nationwide</p></div>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <span class="rc-pill">Jarritos Tamarindo</span>
+                        <span class="rc-stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        <p class="rc-quote">&ldquo;In stock before any grocery store in town. Instant add to cart.&rdquo;</p>
+                        <div class="rc-who">
+                            <div class="rc-avatar">&#9679;<img class="rc-flag" src="https://flagcdn.com/w80/mx.png" alt="Mexico"></div>
+                            <div><p class="rc-name">Verified customer</p><p class="rc-meta">Mesa, AZ</p></div>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <span class="rc-pill">Squid Flavor Lay's</span>
+                        <span class="rc-stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        <p class="rc-quote">&ldquo;I was nervous. Took one chip. Couldn't stop. Pop's knows.&rdquo;</p>
+                        <div class="rc-who">
+                            <div class="rc-avatar">&#9679;<img class="rc-flag" src="https://flagcdn.com/w80/th.png" alt="Thailand"></div>
+                            <div><p class="rc-name">Verified customer</p><p class="rc-meta">Shipped nationwide</p></div>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <span class="rc-pill">Blue Pepsi</span>
+                        <span class="rc-stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        <p class="rc-quote">&ldquo;Tasted like something I remember from a gas station in Manila in '99. So good.&rdquo;</p>
+                        <div class="rc-who">
+                            <div class="rc-avatar">&#9679;<img class="rc-flag" src="https://flagcdn.com/w80/ph.png" alt="Philippines"></div>
+                            <div><p class="rc-name">Verified customer</p><p class="rc-meta">Shipped nationwide</p></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="drops-nav drops-next" id="wrNext" aria-label="Next reviews">
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Instagram footer CTA -->
+        <div class="ig-cta-bar">
+            <span class="ig-copy">See every review live on Instagram.</span>
+            <a class="ig-follow" href="https://instagram.com/popsexotic" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Follow @popsexotic
+            </a>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT / STORY ==================== -->
+    <section class="about" id="about" style="overflow: hidden;">
+        <img class="floating-product md-only" src="images/products/nestle-jungly.png" alt=""
+             aria-hidden="true"
+             style="width:200px; bottom:60px; left:40px; z-index:1; --rot: -6deg; animation-duration: 9s; animation-delay: 2s;">
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="section-title">The Story</h2>
+                    <p class="about-tagline">"Started with $2,000. No investors. No corporate backing."</p>
+                    <p>
+                        Pop's Exotic Sodas & Snacks was built from the ground up by Michael Minnis —
+                        a one-man operation fueled by hustle and a love for flavors you can't find anywhere else.
+                    </p>
+                    <p>
+                        What started as a small idea became Mesa's go-to destination for rare international
+                        snacks, exotic sodas from 20+ countries, and the kind of treats that go viral on TikTok
+                        before they hit shelves anywhere else.
+                    </p>
+                    <p>
+                        Whether you're chasing a childhood snack you thought was discontinued or hunting for
+                        the latest spicy challenge — Pop's has you covered.
+                    </p>
+                    <div class="about-press">
+                        <p class="press-label">As Seen On</p>
+                        <div class="press-logos">
+                            <span class="press-item">ABC15 Arizona</span>
+                            <span class="press-item">Phoenix New Times</span>
+                            <span class="press-item">40K+ on TikTok</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="about-polaroid">
+                        <div class="about-image-frame">
+                            <img src="images/pops-and-cookie.png"
+                                 alt="Michael Minnis and Cookie at Pop's Exotic Sodas and Snacks"
+                                 class="about-image"
+                                 loading="eager"
+                                 fetchpriority="high">
+                        </div>
+                        <div class="about-polaroid-caption">Pop &amp; Cookie, est. 2024</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== VISIT THE SHOP ==================== -->
+    <section class="visit" id="visit">
+        <div class="container">
+            <h2 class="section-title">Visit the Shop</h2>
+            <!-- Live status pill — JS toggles .is-open / .is-closed on mount,
+                 every 60s, and on tab focus, based on America/Phoenix time. -->
+            <div class="visit-status-wrap">
+                <div class="visit-status" id="visitStatus" data-state="closed" role="status" aria-live="polite">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    <span class="status-text" id="visitStatusText">CLOSED &middot; Cookie's napping</span>
+                </div>
+            </div>
+            <div class="visit-grid">
+                <div class="visit-info">
+                    <div class="visit-card v-address">
+                        <div class="v-card-head">
+                            <svg class="v-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span class="v-label">Address</span>
+                        </div>
+                        <div class="v-card-body">
+                            <p>244 N Country Club Dr, Ste 102</p>
+                            <p>Mesa, AZ 85201</p>
+                        </div>
+                    </div>
+
+                    <div class="visit-card v-hours">
+                        <div class="v-card-head">
+                            <svg class="v-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <span class="v-label">Hours</span>
+                        </div>
+                        <div class="v-card-body hours-list">
+                            <div class="h-row"><span class="h-day">Monday</span><span class="h-dots"></span><span class="h-time closed">Closed</span></div>
+                            <div class="h-row"><span class="h-day">Tuesday&ndash;Friday</span><span class="h-dots"></span><span class="h-time">12:00 PM to 7:00 PM</span></div>
+                            <div class="h-row"><span class="h-day">Saturday&ndash;Sunday</span><span class="h-dots"></span><span class="h-time">12:00 PM to 6:00 PM</span></div>
+                        </div>
+                    </div>
+
+                    <div class="visit-card v-contact">
+                        <div class="v-card-head">
+                            <svg class="v-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <span class="v-label">Contact</span>
+                        </div>
+                        <div class="v-card-body">
+                            <a href="tel:+16027610720" class="contact-row">
+                                <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                (602) 761-0720
+                            </a>
+                            <a href="mailto:popsexotics@gmail.com" class="contact-row">
+                                <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg>
+                                popsexotics@gmail.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Socials row — preserved exactly as-is -->
+                    <div class="visit-socials">
+                        <a href="https://www.tiktok.com/@popsexotics" target="_blank" class="social-link tiktok">TikTok</a>
+                        <a href="https://www.instagram.com/popsexotics/" target="_blank" class="social-link instagram">Instagram</a>
+                        <a href="https://www.facebook.com/mesapops/" target="_blank" class="social-link facebook">Facebook</a>
+                    </div>
+                </div>
+                <div class="visit-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.5!2d-111.8413!3d33.4255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872ba7d7a7a7a7a7%3A0x0!2s244+N+Country+Club+Dr%2C+Mesa%2C+AZ+85201!5e0!3m2!1sen!1sus!4v1"
+                        width="100%"
+                        height="400"
+                        style="border:0; border-radius: 16px;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        title="Pop's Exotic Sodas & Snacks location">
+                    </iframe>
+                    <!-- Custom paw-print marker overlaid on top of the iframe.
+                         Iframe paints its own red pin we can't reach inside
+                         a same-origin sandbox; this overlay sits at the
+                         centerpoint where the embed renders the shop pin and
+                         covers it. pointer-events:none so map drag/zoom
+                         stays interactive. -->
+                    <div class="map-paw-pin" aria-hidden="true">
+                        <svg viewBox="0 0 56 72" width="56" height="72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Magenta teardrop pin -->
+                            <path d="M28 2C14.74 2 4 12.5 4 25.4 4 43 28 70 28 70s24-27 24-44.6C52 12.5 41.26 2 28 2Z" fill="#FF1B6B" stroke="#0A0A0A" stroke-width="2.5" stroke-linejoin="round"/>
+                            <!-- White paw print, centered around the pin head -->
+                            <g fill="#FFF4E0" transform="translate(28 23)">
+                                <!-- Toes -->
+                                <ellipse cx="-7.5" cy="-4" rx="2.6" ry="3.6"/>
+                                <ellipse cx="-2.6" cy="-7.2" rx="2.4" ry="3.4"/>
+                                <ellipse cx="2.6" cy="-7.2" rx="2.4" ry="3.4"/>
+                                <ellipse cx="7.5" cy="-4" rx="2.6" ry="3.6"/>
+                                <!-- Pad -->
+                                <path d="M0 0c-4.4 0-7.5 3.5-7.5 7s2.5 5.5 7.5 5.5S7.5 10.5 7.5 7 4.4 0 0 0Z"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER (Tropical jungle + giant wordmark + flag row) ==================== -->
+    <footer class="bloom-footer tropical-footer">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#about">About</a>
+                <a href="#">Careers</a>
+                <a href="#">Press</a>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <a href="#shop">All Products</a>
+                <a href="#drops">This Week's Drops</a>
+                <a href="#shop" onclick="filterProducts('Mystery Boxes')">Subscriptions</a>
+            </div>
+            <div class="footer-col">
+                <h4>Community</h4>
+                <a href="#visit">Contact</a>
+                <a href="#origins">Origins</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <a href="https://www.instagram.com/popsexotics/" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://www.tiktok.com/@popsexotics" target="_blank" rel="noopener">TikTok</a>
+                <a href="https://www.facebook.com/mesapops/" target="_blank" rel="noopener">Facebook</a>
+            </div>
+            <div class="footer-col">
+                <h4>Stay in the loop</h4>
+                <p style="font-size:14px; color:rgba(255,244,224,0.65); margin:0 0 12px;">New drops, restocks, and the occasional spicy challenge.</p>
+                <div class="footer-signup-wrap" id="footerSignupWrap">
+                    <form class="footer-signup" id="footerSignupForm" novalidate>
+                        <input type="email" id="footerSignupEmail" placeholder="your@email.com" aria-label="Email address" aria-describedby="footerSignupError">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    <p class="footer-signup-error" id="footerSignupError" role="alert" aria-live="polite" hidden></p>
+                </div>
+            </div>
+        </div>
+        <!-- Row of every country Pop's sources from -->
+        <div class="t-flag-row" aria-label="Countries we source from">
+            <span class="flag-chip" aria-label="Japan">&#127471;&#127477;</span>
+            <span class="flag-chip" aria-label="Mexico">&#127474;&#127485;</span>
+            <span class="flag-chip" aria-label="Trinidad">&#127481;&#127481;</span>
+            <span class="flag-chip" aria-label="Thailand">&#127481;&#127469;</span>
+            <span class="flag-chip" aria-label="Nigeria">&#127475;&#127468;</span>
+            <span class="flag-chip" aria-label="South Korea">&#127472;&#127479;</span>
+            <span class="flag-chip" aria-label="Egypt">&#127466;&#127468;</span>
+            <span class="flag-chip" aria-label="Peru">&#127477;&#127466;</span>
+            <span class="flag-chip" aria-label="Philippines">&#127477;&#127469;</span>
+            <span class="flag-chip" aria-label="India">&#127470;&#127475;</span>
+            <span class="flag-chip" aria-label="China">&#127464;&#127475;</span>
+            <span class="flag-chip" aria-label="UK">&#127468;&#127463;</span>
+            <span class="flag-chip" aria-label="USA">&#127482;&#127480;</span>
+        </div>
+        <div class="footer-wordmark">Pop&rsquo;s Exotic</div>
+        <div class="footer-tiny">
+            <span>&copy; 2026 Pop&rsquo;s Exotic Sodas &amp; Snacks LLC. All rights reserved.</span>
+            <span>244 N Country Club Dr, Ste 102, Mesa, AZ 85201</span>
+        </div>
+    </footer>
+
+    <!-- Cart drawer (demo: empty state only, no real cart logic) -->
+    <div class="cart-backdrop" id="cartBackdrop" aria-hidden="true"></div>
+    <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartDrawerTitle" aria-hidden="true">
+        <div class="cart-drawer-head">
+            <h3 class="cart-drawer-title" id="cartDrawerTitle">Your Cart</h3>
+            <button class="cart-drawer-close" id="cartDrawerClose" type="button" aria-label="Close cart">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+        <!-- Empty state -->
+        <div class="cart-empty-state">
+            <svg class="cart-empty-icon" viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <h4 class="cart-empty-heading">Your cart's empty</h4>
+            <p class="cart-empty-body">Pick something exotic and we'll pack it the same day.</p>
+            <a class="cart-empty-cta" href="#drops" id="cartDrawerCta">Shop the drops</a>
+        </div>
+        <!-- Items state (rendered when cart has items) -->
+        <div class="cart-items-state">
+            <div class="cart-lines" id="cartLines"></div>
+            <button class="clear-cart-btn" id="cartClearBtn" type="button" aria-label="Clear cart">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 6h18"/>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                    <line x1="10" y1="11" x2="10" y2="17"/>
+                    <line x1="14" y1="11" x2="14" y2="17"/>
+                </svg>
+                Clear cart
+            </button>
+            <div class="cart-footer">
+                <div class="cart-subtotal-row">
+                    <span class="cart-subtotal-label">Subtotal</span>
+                    <span class="cart-subtotal-val" id="cartSubtotal">$0.00</span>
+                </div>
+                <p class="cart-shipping-note">Shipping &amp; taxes calculated at checkout</p>
+                <button class="cart-checkout-btn" id="cartCheckoutBtn" type="button">Checkout</button>
+                <p class="cart-demo-note">Demo cart &mdash; checkout isn't wired up yet.</p>
+            </div>
+        </div>
+    </aside>
+    <!-- Floating "Added!" toast -->
+    <div class="cart-toast" id="cartToast" role="status" aria-live="polite">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="cartToastMsg">Added to cart</span>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-content">
+            <button class="mobile-close-btn" id="mobileCloseBtn">&times;</button>
+            <a href="#shop" class="mobile-link">Shop</a>
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#visit" class="mobile-link">Visit</a>
+            <a href="#" class="mobile-link" data-cart-trigger>Cart (<span class="snipcart-items-count">0</span>)</a>
+        </div>
+    </div>
+
+    <!-- Snipcart (TEST MODE — disabled until real API key is added)
+         To enable: sign up at snipcart.com, get your PUBLIC test API key,
+         replace YOUR_TEST_API_KEY below, and uncomment both the div and script.
+    <div hidden id="snipcart" data-api-key="YOUR_TEST_API_KEY" data-config-modal-style="side">
+    </div>
+    <script src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>
+    -->
+    <script src="script.js?v=20260427b"></script>
+    <script>
+        // ============================================
+        // DEMO CART
+        // In-memory cart state, persisted in sessionStorage
+        // so a refresh during the demo doesn't blow it
+        // away, but closing the tab gives the next demo
+        // session a fresh empty cart. No real checkout —
+        // clicking checkout just shows a friendly toast.
+        // Cart shape: { [id]: { id, name, price, category, image, qty } }
+        // ============================================
+        (function () {
+            const drawer = document.getElementById('cartDrawer');
+            const backdrop = document.getElementById('cartBackdrop');
+            const closeBtn = document.getElementById('cartDrawerClose');
+            const cta = document.getElementById('cartDrawerCta');
+            const linesEl = document.getElementById('cartLines');
+            const subtotalEl = document.getElementById('cartSubtotal');
+            const checkoutBtn = document.getElementById('cartCheckoutBtn');
+            const toast = document.getElementById('cartToast');
+            const toastMsg = document.getElementById('cartToastMsg');
+            if (!drawer || !backdrop) return;
+
+            const STORAGE_KEY = 'popsCartDemoV1';
+
+            // Same Lucide-style category icons used by the Shop tiles, so the
+            // line item thumbnail matches when there's no product image.
+            const CATEGORY_ICONS = {
+                "Exotic Sodas":         '<path d="M8 2h8"/><path d="M9 2v2.789a4 4 0 0 1-.672 2.219l-.656.984A4 4 0 0 0 7 9.978V18a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9.978a4 4 0 0 0-.672-2.219l-.656-.984A4 4 0 0 1 15 4.789V2"/><path d="M7 15a6.472 6.472 0 0 1 5 0 6.47 6.47 0 0 0 5 0"/>',
+                "International Chips":  '<path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/>',
+                "Sweet & Candy":        '<path d="m9.5 7.5-2 2a4.95 4.95 0 1 0 7 7l2-2a4.95 4.95 0 1 0-7-7Z"/><path d="M14 6.5v10"/><path d="M10 7.5v10"/>',
+                "Spicy Snacks":         '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
+                "Mystery Boxes":        '<path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/>',
+                "Nostalgic Favorites":  '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>'
+            };
+
+            // ----- State -----
+            let cart = {};
+            try {
+                const raw = sessionStorage.getItem(STORAGE_KEY);
+                if (raw) cart = JSON.parse(raw) || {};
+            } catch (e) { cart = {}; }
+
+            function save() {
+                try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); } catch (e) {}
+            }
+            function totalQty() {
+                return Object.values(cart).reduce((s, it) => s + (it.qty || 0), 0);
+            }
+            function subtotal() {
+                return Object.values(cart).reduce((s, it) => s + (it.qty || 0) * (parseFloat(it.price) || 0), 0);
+            }
+            function escapeHtml(str) {
+                return String(str).replace(/[&<>"']/g, c => ({
+                    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+                }[c]));
+            }
+
+            // ----- Render -----
+            // Pulse the counter when its displayed value changes. Single
+            // animation path so Add to Cart, qty change, and Clear cart all
+            // share the same brief scale pulse.
+            let lastBadgeCount = null;
+            function updateBadges() {
+                const count = totalQty();
+                document.querySelectorAll('.snipcart-items-count').forEach(el => {
+                    if (el.textContent !== String(count)) {
+                        el.textContent = String(count);
+                        // Restart the animation on each change
+                        el.classList.remove('is-pulse');
+                        void el.offsetWidth;
+                        el.classList.add('is-pulse');
+                    }
+                });
+                lastBadgeCount = count;
+            }
+            function renderLines() {
+                const items = Object.values(cart);
+                if (items.length === 0) {
+                    drawer.classList.remove('has-items');
+                    linesEl.innerHTML = '';
+                    subtotalEl.textContent = '$0.00';
+                    return;
+                }
+                drawer.classList.add('has-items');
+                linesEl.innerHTML = items.map(it => {
+                    const iconPaths = CATEGORY_ICONS[it.category] || CATEGORY_ICONS["Mystery Boxes"];
+                    const img = it.image
+                        ? `<img src="${escapeHtml(it.image)}" alt="">`
+                        : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${iconPaths}</svg>`;
+                    const lineTotal = (it.qty * parseFloat(it.price)).toFixed(2);
+                    return `
+                        <div class="cart-line" data-line-id="${escapeHtml(it.id)}">
+                            <div class="cart-line-img">${img}</div>
+                            <div class="cart-line-info">
+                                <p class="cart-line-name" title="${escapeHtml(it.name)}">${escapeHtml(it.name)}</p>
+                                <p class="cart-line-meta">${escapeHtml(it.category || '')}</p>
+                                <div class="cart-line-qty">
+                                    <button class="cart-qty-btn" type="button" data-qty-dec aria-label="Decrease quantity">&minus;</button>
+                                    <span class="cart-qty-val">${it.qty}</span>
+                                    <button class="cart-qty-btn" type="button" data-qty-inc aria-label="Increase quantity">+</button>
+                                    <button class="cart-line-remove" type="button" data-remove>Remove</button>
+                                </div>
+                            </div>
+                            <span class="cart-line-price">$${lineTotal}</span>
+                        </div>
+                    `;
+                }).join('');
+                subtotalEl.textContent = '$' + subtotal().toFixed(2);
+            }
+            function refresh() {
+                renderLines();
+                updateBadges();
+                save();
+            }
+
+            // ----- Cart ops -----
+            function addToCart(item) {
+                const id = item.id;
+                if (!id) return;
+                if (cart[id]) {
+                    cart[id].qty += 1;
+                } else {
+                    cart[id] = {
+                        id: id,
+                        name: item.name || 'Item',
+                        price: parseFloat(item.price) || 0,
+                        category: item.category || '',
+                        image: item.image || '',
+                        qty: 1
+                    };
+                }
+                refresh();
+            }
+            function setQty(id, qty) {
+                if (!cart[id]) return;
+                if (qty <= 0) {
+                    delete cart[id];
+                } else {
+                    cart[id].qty = qty;
+                }
+                refresh();
+            }
+            // Clear cart: empty all items in one click, no confirmation.
+            // refresh() drops the .has-items class on the drawer, which hides
+            // .cart-items-state (and our Clear cart button with it) and shows
+            // the existing empty-state markup. No toast — the visual change
+            // is feedback enough.
+            function clearCart() {
+                cart = {};
+                refresh();
+            }
+
+            // ----- Drawer open/close -----
+            let prevBodyOverflow = '';
+            function openDrawer() {
+                prevBodyOverflow = document.body.style.overflow || '';
+                document.body.style.overflow = 'hidden';
+                drawer.classList.add('is-open');
+                backdrop.classList.add('is-open');
+                drawer.setAttribute('aria-hidden', 'false');
+                backdrop.setAttribute('aria-hidden', 'false');
+                setTimeout(() => closeBtn && closeBtn.focus(), 60);
+            }
+            function closeDrawer() {
+                drawer.classList.remove('is-open');
+                backdrop.classList.remove('is-open');
+                drawer.setAttribute('aria-hidden', 'true');
+                backdrop.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = prevBodyOverflow;
+            }
+
+            // ----- Toast -----
+            let toastT;
+            function showToast(msg) {
+                if (!toast) return;
+                toastMsg.textContent = msg;
+                toast.classList.add('is-visible');
+                clearTimeout(toastT);
+                toastT = setTimeout(() => toast.classList.remove('is-visible'), 1800);
+            }
+
+            // ----- Event delegation -----
+            document.addEventListener('click', function (e) {
+                // Open drawer
+                const trigger = e.target.closest('[data-cart-trigger]');
+                if (trigger) {
+                    e.preventDefault();
+                    const mm = document.getElementById('mobileMenuOverlay');
+                    if (mm && mm.classList.contains('active')) mm.classList.remove('active');
+                    openDrawer();
+                    return;
+                }
+
+                // Add to cart (from anywhere on page)
+                const addBtn = e.target.closest('[data-add-cart]');
+                if (addBtn) {
+                    e.preventDefault();
+                    addToCart({
+                        id: addBtn.dataset.id,
+                        name: addBtn.dataset.name,
+                        price: addBtn.dataset.price,
+                        category: addBtn.dataset.category,
+                        image: addBtn.dataset.image
+                    });
+                    showToast('Added "' + (addBtn.dataset.name || 'item') + '" to cart');
+                    // Don't auto-open the drawer — toast confirms it. User can
+                    // open via the nav cart link when they're ready.
+                    return;
+                }
+
+                // Qty +/- and remove inside drawer
+                const line = e.target.closest('.cart-line');
+                if (line) {
+                    const id = line.getAttribute('data-line-id');
+                    if (!id || !cart[id]) return;
+                    if (e.target.closest('[data-qty-inc]')) { setQty(id, cart[id].qty + 1); return; }
+                    if (e.target.closest('[data-qty-dec]')) { setQty(id, cart[id].qty - 1); return; }
+                    if (e.target.closest('[data-remove]')) { setQty(id, 0); return; }
+                }
+            });
+
+            // Close handlers
+            if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+            backdrop.addEventListener('click', closeDrawer);
+            // Clear cart — single click, no confirmation, no toast.
+            const clearBtn = document.getElementById('cartClearBtn');
+            if (clearBtn) clearBtn.addEventListener('click', clearCart);
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+            });
+
+            // Empty-state CTA: close + smooth-scroll to #drops
+            if (cta) {
+                cta.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    closeDrawer();
+                    const target = document.querySelector('#drops');
+                    if (target) {
+                        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
+                    }
+                });
+            }
+
+            // Demo checkout — friendly message, no real flow
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener('click', function () {
+                    showToast('Demo only — real checkout coming soon');
+                });
+            }
+
+            // Initial render (in case of sessionStorage data)
+            refresh();
+        })();
+
+        // Visit the Shop — live OPEN/CLOSED status pill.
+        // Hours (America/Phoenix, no DST):
+        //   Mon: closed; Tue–Fri: 12:00–19:00; Sat–Sun: 12:00–18:00
+        // Recomputes on mount, every 60s, and when the tab regains focus.
+        (function () {
+            const pill = document.getElementById('visitStatus');
+            const text = document.getElementById('visitStatusText');
+            if (!pill || !text) return;
+
+            // Returns { weekday: 0..6 (Sun..Sat), minutes: total minutes since midnight }
+            // for the current time in America/Phoenix, regardless of the
+            // visitor's local clock or DST quirks.
+            function phoenixNow() {
+                const fmt = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/Phoenix',
+                    weekday: 'short',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                });
+                const parts = fmt.formatToParts(new Date());
+                const weekdayShort = parts.find(p => p.type === 'weekday').value; // "Sun".."Sat"
+                const hour = parseInt(parts.find(p => p.type === 'hour').value, 10);
+                const minute = parseInt(parts.find(p => p.type === 'minute').value, 10);
+                const map = { Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6 };
+                return { weekday: map[weekdayShort], minutes: hour * 60 + minute };
+            }
+
+            function isOpenNow() {
+                const { weekday, minutes } = phoenixNow();
+                const open = 12 * 60; // 12:00
+                if (weekday === 1) return false;             // Monday: closed
+                if (weekday >= 2 && weekday <= 5) {           // Tue–Fri
+                    return minutes >= open && minutes < 19 * 60;
+                }
+                if (weekday === 0 || weekday === 6) {         // Sat–Sun
+                    return minutes >= open && minutes < 18 * 60;
+                }
+                return false;
+            }
+
+            function applyState() {
+                const open = isOpenNow();
+                pill.setAttribute('data-state', open ? 'open' : 'closed');
+                text.innerHTML = open
+                    ? "OPEN NOW &middot; Cookie's on duty"
+                    : "CLOSED &middot; Cookie's napping";
+            }
+
+            applyState();
+            setInterval(applyState, 60 * 1000);
+            window.addEventListener('focus', applyState);
+            // Some browsers fire visibilitychange instead of focus when
+            // returning from a background tab — handle both.
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) applyState();
+            });
+        })();
+
+        // Footer newsletter signup — client-side demo only.
+        // Validates an email, shows magenta inline error on failure, swaps in
+        // a success block on success. No backend POST, no persistence.
+        (function () {
+            const wrap = document.getElementById('footerSignupWrap');
+            const form = document.getElementById('footerSignupForm');
+            const input = document.getElementById('footerSignupEmail');
+            const errorEl = document.getElementById('footerSignupError');
+            if (!wrap || !form || !input || !errorEl) return;
+
+            const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            function showError(msg) {
+                errorEl.textContent = msg;
+                errorEl.hidden = false;
+                form.classList.add('has-error');
+            }
+            function clearError() {
+                errorEl.hidden = true;
+                errorEl.textContent = '';
+                form.classList.remove('has-error');
+            }
+            input.addEventListener('input', () => {
+                if (!errorEl.hidden) clearError();
+            });
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const value = input.value.trim();
+                if (!value) {
+                    showError("Drop your email so we can drop the next box on you.");
+                    return;
+                }
+                if (!EMAIL_RE.test(value)) {
+                    showError("That doesn't look like a real email.");
+                    return;
+                }
+                // Valid: swap the form for a success block. Animation runs on
+                // the next frame so the transition fires.
+                clearError();
+                form.remove();
+                errorEl.remove();
+                const success = document.createElement('div');
+                success.className = 'footer-signup-success';
+                success.setAttribute('role', 'status');
+                success.innerHTML =
+                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+                        '<circle cx="12" cy="12" r="10"/>' +
+                        '<path d="m9 12 2 2 4-4"/>' +
+                    '</svg>' +
+                    "<h5>You're in.</h5>" +
+                    "<p>We'll DM you the second the next drop hits.</p>";
+                wrap.appendChild(success);
+                // Force reflow so the transition picks up the starting state,
+                // then flip to visible. rAF is unreliable under throttling, so
+                // use a tiny setTimeout — same idea as the intro overlay.
+                void success.offsetWidth;
+                setTimeout(() => success.classList.add('is-visible'), 16);
+            });
+        })();
+
+        // FAQ accordion: click question to expand/collapse answer, sync aria-expanded
+        document.addEventListener('click', function (e) {
+            const q = e.target.closest('.faq-q');
+            if (!q) return;
+            const item = q.parentElement;
+            item.classList.toggle('open');
+            q.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
+        });
+
+        // FAQ spotlight glow: track cursor position per card so the magenta
+        // radial-gradient border follows the mouse (vanilla port of the
+        // 21st.dev GlowCard component — pure CSS custom properties).
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                item.style.setProperty('--x', (e.clientX - rect.left) + 'px');
+                item.style.setProperty('--y', (e.clientY - rect.top) + 'px');
+            });
+        });
+
+        // Drops carousel: chevron nav scrolls one card (280 + 24 gap = 304px) at a time
+        function wireCarousel(rowSel, prevSel, nextSel, step) {
+            const row = document.querySelector(rowSel);
+            const prev = document.querySelector(prevSel);
+            const next = document.querySelector(nextSel);
+            if (!row || !prev || !next) return;
+            prev.addEventListener('click', () => row.scrollBy({ left: -step, behavior: 'smooth' }));
+            next.addEventListener('click', () => row.scrollBy({ left:  step, behavior: 'smooth' }));
+            function update() {
+                prev.disabled = row.scrollLeft <= 4;
+                next.disabled = row.scrollLeft + row.clientWidth >= row.scrollWidth - 4;
+            }
+            row.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update);
+            update();
+        }
+        wireCarousel('.drops-row', '.drops-prev', '.drops-next', 304);
+        wireCarousel('#writtenRail', '#wrPrev', '#wrNext', 364); // 340 card + 24 gap
+
+        // Video testimonials: thumbnail swap, play/pause, mute, hover preview
+        (function () {
+            const main = document.getElementById('reviewVideoMain');
+            const nameEl = document.getElementById('reviewName');
+            const metaEl = document.getElementById('reviewMeta');
+            const igEl = document.getElementById('reviewIG');
+            const playBtn = document.getElementById('reviewPlayBtn');
+            const muteBtn = document.getElementById('reviewMuteBtn');
+            const thumbs = [...document.querySelectorAll('#reviewThumbs .video-thumb')];
+            if (!main) return;
+
+            // Reduced-motion: skip autoplay on main + thumb previews
+            const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const featured = document.querySelector('.featured-video');
+            function setActive(btn) {
+                // Hide the clicked thumb (it's now the featured video), reveal
+                // the previously-active one — right column always shows 3 of 4.
+                thumbs.forEach(t => t.classList.toggle('is-active', t === btn));
+                const src = btn.dataset.src;
+                const name = btn.dataset.name;
+                const loc = btn.dataset.location;
+                const product = btn.dataset.product;
+                const ig = btn.dataset.ig;
+                // 200ms fade out, swap source, fade back in
+                featured.style.opacity = '0';
+                setTimeout(() => {
+                    main.innerHTML = '<source src="' + src + '" type="video/mp4">';
+                    main.load();
+                    if (!reduced) main.play().catch(() => {});
+                    nameEl.textContent = name;
+                    metaEl.textContent = loc + ' \u00b7 ' + product;
+                    igEl.href = ig;
+                    main.setAttribute('aria-label', name + ' reviewing ' + product);
+                    featured.style.opacity = '1';
+                }, 200);
+            }
+
+            thumbs.forEach(t => {
+                t.addEventListener('click', () => setActive(t));
+                const v = t.querySelector('video');
+                if (!reduced && v) {
+                    t.addEventListener('mouseenter', () => { v.currentTime = 0; v.play().catch(() => {}); });
+                    t.addEventListener('mouseleave', () => { v.pause(); v.currentTime = 0; });
+                }
+            });
+
+            // Click video itself toggles mute
+            main.addEventListener('click', () => {
+                main.muted = !main.muted;
+                reflectMute();
+            });
+            function reflectMute() {
+                const mute = muteBtn.querySelector('.icon-mute');
+                const unmute = muteBtn.querySelector('.icon-unmute');
+                if (main.muted) {
+                    mute.style.display = ''; unmute.style.display = 'none';
+                    muteBtn.setAttribute('aria-label', 'Unmute video');
+                } else {
+                    mute.style.display = 'none'; unmute.style.display = '';
+                    muteBtn.setAttribute('aria-label', 'Mute video');
+                }
+            }
+            muteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                main.muted = !main.muted;
+                reflectMute();
+            });
+            playBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (main.paused) { main.play(); } else { main.pause(); }
+                reflectPlay();
+            });
+            function reflectPlay() {
+                const pause = playBtn.querySelector('.icon-pause');
+                const play = playBtn.querySelector('.icon-play');
+                if (main.paused) {
+                    pause.style.display = 'none'; play.style.display = '';
+                    playBtn.setAttribute('aria-label', 'Play video');
+                } else {
+                    pause.style.display = ''; play.style.display = 'none';
+                    playBtn.setAttribute('aria-label', 'Pause video');
+                }
+            }
+            main.addEventListener('play', reflectPlay);
+            main.addEventListener('pause', reflectPlay);
+        })();
+    </script>
+    <script src="intro.js?v=20260429c"></script>
+    <script src="dripvideo.js?v=20260420e"></script>
+</body>
+</html>
