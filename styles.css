@@ -4522,29 +4522,89 @@ img { max-width: 100%; height: auto; display: block; }
     /* Make sure the subhead text wraps cleanly */
     .footer-col p { max-width: 100%; word-wrap: break-word; }
 
-    /* ---- ISSUE 2: HOURS CARD ---- */
-    /* Stack day above time, drop the dotted leader line — guarantees no
-       cutoff regardless of card width. */
+    /* ---- ISSUE 2: HOURS + CONTACT CARDS ----
+       Center the content, bump font sizes for readability. Also flatten
+       the row direction in HOURS to a centered stack so nothing gets
+       clipped on the right side. Box-sizing is already enforced
+       globally via the * rule above; reaffirmed defensively here. */
+    .visit-card,
+    .visit-card * { box-sizing: border-box; }
+    .visit-card {
+        padding: 22px 20px;
+        max-width: 100%;
+    }
+    /* Center header (icon + label) on HOURS and CONTACT */
+    .v-hours .v-card-head,
+    .v-contact .v-card-head {
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+    .v-hours .v-label,
+    .v-contact .v-label {
+        font-size: 22px;
+    }
+    .v-hours .v-icon,
+    .v-contact .v-icon {
+        width: 22px;
+        height: 22px;
+    }
+    /* HOURS body — centered stack, no dotted leader */
+    .v-hours .v-card-body { text-align: center; }
+    .v-hours .hours-list { gap: 12px; align-items: center; }
     .v-hours .h-row {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 2px;
+        align-items: center;
+        gap: 4px;
     }
     .v-hours .h-dots { display: none; }
+    .v-hours .h-day {
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+    }
     .v-hours .h-time {
-        text-align: left;
-        font-size: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
         white-space: normal;
     }
-    .v-hours .h-day { font-size: 14px; }
-    /* Card itself: shrink padding so content has more room and zero
-       horizontal overflow */
-    .visit-card {
-        padding: 18px 18px;
-        max-width: 100%;
+    .v-hours .h-time.closed { font-size: 16px; }
+    /* CONTACT body — centered stack */
+    .v-contact .v-card-body {
+        align-items: center;
+        gap: 12px;
+    }
+    .v-contact .contact-row {
+        font-size: 16px;
+        justify-content: center;
+    }
+    .v-contact .contact-row .c-icon { width: 18px; height: 18px; }
+
+    /* ---- SOCIAL BUTTONS — centered equal-width row ---- */
+    .visit-socials {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        width: 100%;
+        margin-top: 24px;
+    }
+    .social-link {
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: 120px;
+        padding: 10px 8px;
+        font-size: 12px;
+        letter-spacing: 0.4px;
+        text-align: center;
+        white-space: nowrap;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         box-sizing: border-box;
     }
-    .visit-card .v-card-head { gap: 8px; }
 
     /* ---- ISSUE 5: DROPS CAROUSEL (also issue 3 reviews share styles) ---- */
     .drops-wrapper { padding: 0 16px; position: relative; }
