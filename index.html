@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pop's Exotic Sodas & Snacks | Mesa, AZ</title>
     <meta name="description" content="Don't be borin'. Try something foreign. Exotic sodas, international snacks, and rare treats from around the world. Shop online or visit us in Mesa, AZ.">
-    <link rel="stylesheet" href="styles.css?v=20260429d">
+    <link rel="stylesheet" href="styles.css?v=20260505a">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@600;700&family=Fraunces:ital,wght@1,900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -42,6 +42,16 @@
                     Cart (<span class="snipcart-items-count">0</span>)
                 </a></li>
             </ul>
+            <!-- Mobile cart pill — visible only on phones (desktop hides it).
+                 Uses the same data-cart-trigger so the drawer opens directly. -->
+            <button class="mobile-cart-btn" type="button" data-cart-trigger aria-label="Open cart">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+                (<span class="snipcart-items-count">0</span>)
+            </button>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
                 <span></span>
                 <span></span>
@@ -1179,6 +1189,75 @@
 
             // Initial render (in case of sessionStorage data)
             refresh();
+        })();
+
+        // Carousel pagination dots — auto-injected on mobile only (<=767px).
+        // Watches scroll position on each rail, highlights the active dot,
+        // and lets the user tap a dot to scroll-snap to that card.
+        (function () {
+            const mql = window.matchMedia('(max-width: 767px)');
+            const rails = [
+                { rail: '.t-drops-rail', card: '.t-drop-card', after: '.drops-wrapper' },
+                { rail: '#writtenRail', card: '.review-card', after: '.written-wrapper' }
+            ];
+
+            function buildDots(cfg) {
+                const railEl = document.querySelector(cfg.rail);
+                const afterEl = document.querySelector(cfg.after);
+                if (!railEl || !afterEl) return null;
+                const cards = railEl.querySelectorAll(cfg.card);
+                if (cards.length < 2) return null;
+                const dots = document.createElement('div');
+                dots.className = 'carousel-dots';
+                dots.setAttribute('role', 'tablist');
+                cards.forEach((card, i) => {
+                    const b = document.createElement('button');
+                    b.type = 'button';
+                    b.setAttribute('role', 'tab');
+                    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                    if (i === 0) b.setAttribute('aria-current', 'true');
+                    b.addEventListener('click', () => {
+                        railEl.scrollTo({ left: card.offsetLeft - railEl.offsetLeft, behavior: 'smooth' });
+                    });
+                    dots.appendChild(b);
+                });
+                afterEl.appendChild(dots);
+                // Update active dot on scroll
+                let raf;
+                railEl.addEventListener('scroll', () => {
+                    if (raf) cancelAnimationFrame(raf);
+                    raf = requestAnimationFrame(() => {
+                        const railRect = railEl.getBoundingClientRect();
+                        const railLeft = railRect.left;
+                        let bestIdx = 0;
+                        let bestDist = Infinity;
+                        cards.forEach((c, i) => {
+                            const d = Math.abs(c.getBoundingClientRect().left - railLeft);
+                            if (d < bestDist) { bestDist = d; bestIdx = i; }
+                        });
+                        dots.querySelectorAll('button').forEach((b, i) => {
+                            if (i === bestIdx) b.setAttribute('aria-current', 'true');
+                            else b.removeAttribute('aria-current');
+                        });
+                    });
+                }, { passive: true });
+                return dots;
+            }
+
+            const built = [];
+            function setup() {
+                if (mql.matches && built.length === 0) {
+                    rails.forEach(cfg => {
+                        const d = buildDots(cfg);
+                        if (d) built.push(d);
+                    });
+                } else if (!mql.matches && built.length > 0) {
+                    built.forEach(d => d.remove());
+                    built.length = 0;
+                }
+            }
+            setup();
+            mql.addEventListener('change', setup);
         })();
 
         // Visit the Shop — live OPEN/CLOSED status pill.

@@ -4469,87 +4469,293 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ============================================
    MOBILE OVERRIDES — phones only (<= 767px)
-   Three fixes in a single block:
-     1. Drops carousel: shrink cards so the next one
-        clearly peeks from the right edge
-     2. Reviews: shrink featured video so users see
-        there's more below; tighten written-rail card
-        widths so 1.5+ cards are visible
-     3. Shop: keep 2-column grid + shrink image
-        aspect ratio so cards stay compact
+   Comprehensive mobile fix block. Covers:
+     1. Newsletter form (stacked, full-width button)
+     2. Hours card (day/time stack, no dots line)
+     3. Reviews carousel (90vw cards, peek, dots, arrows)
+     4. Shop grid (1-col under 480, 2-col 480-767, fits ATC)
+     5. Drops carousel (85vw cards, peek, dots, arrows)
+     A-I. Defensive globals: no horizontal scroll,
+          box-sizing, section padding, mobile cart pill
    Desktop layout (>=768px) is untouched.
    ============================================ */
 @media (max-width: 767px) {
 
-    /* ---- 1. THIS WEEK'S DROPS ---- */
-    .drops-wrapper { padding: 0 16px; }
+    /* ---- DEFENSIVE GLOBALS — kill any horizontal scroll ---- */
+    html, body {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+
+    /* Section horizontal padding so nothing kisses the screen edges */
+    section.shop .container,
+    section.about .container,
+    section.visit .container { padding-left: 16px; padding-right: 16px; }
+    .t-drops, .t-origins, .t-reviews, .t-how, .bloom-faq, .t-value-strip {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* ---- ISSUE 1: NEWSLETTER FORM ---- */
+    /* Single-column footer on mobile so the newsletter copy + form
+       have room to breathe. Each column gets full width. */
+    .footer-cols {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .tropical-footer .footer-col { max-width: 100%; }
+    /* Stack input and Subscribe button vertically on mobile */
+    .footer-signup {
+        flex-direction: column;
+        gap: 10px;
+        max-width: 100%;
+    }
+    .footer-signup input,
+    .footer-signup button {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    /* Make sure the subhead text wraps cleanly */
+    .footer-col p { max-width: 100%; word-wrap: break-word; }
+
+    /* ---- ISSUE 2: HOURS CARD ---- */
+    /* Stack day above time, drop the dotted leader line — guarantees no
+       cutoff regardless of card width. */
+    .v-hours .h-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+    .v-hours .h-dots { display: none; }
+    .v-hours .h-time {
+        text-align: left;
+        font-size: 14px;
+        white-space: normal;
+    }
+    .v-hours .h-day { font-size: 14px; }
+    /* Card itself: shrink padding so content has more room and zero
+       horizontal overflow */
+    .visit-card {
+        padding: 18px 18px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    .visit-card .v-card-head { gap: 8px; }
+
+    /* ---- ISSUE 5: DROPS CAROUSEL (also issue 3 reviews share styles) ---- */
+    .drops-wrapper { padding: 0 16px; position: relative; }
     .t-drops-rail {
         gap: 14px;
-        /* trailing padding so the last card has room to scroll into view */
-        padding-right: 24px;
+        padding: 0 16px 8px;
+        margin: 0 -16px;
         scroll-padding-left: 16px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
     }
     .t-drop-card {
-        flex: 0 0 240px;
-        width: 240px;
+        /* 85vw with the next card peeking ~13vw on the right */
+        flex: 0 0 85vw;
+        width: 85vw;
+        max-width: 320px;
         height: auto;
         min-height: 380px;
         padding: 20px;
+        scroll-snap-align: start;
     }
-    .t-drop-card .img-wrap {
-        height: 160px;
-        margin-top: 16px;
-    }
+    .t-drop-card .img-wrap { height: 160px; margin-top: 16px; }
     .t-drop-card .name { font-size: 15px; margin-top: 12px; }
     .t-drop-card .price { font-size: 22px; }
-    .t-drop-card .add { padding: 10px 16px; font-size: 13px; }
-
-    /* ---- 2. REVIEWS — featured video ---- */
-    /* Cap featured video so the section doesn't eat a whole viewport.
-       Users immediately see the thumbnail row and the written reviews
-       below it. */
-    .featured-video {
-        max-height: 50vh;
-        aspect-ratio: 4 / 5;
+    .t-drop-card .add { padding: 10px 16px; font-size: 13px; min-height: 44px; }
+    /* Show carousel arrows on mobile (smaller, lower-positioned) */
+    .drops-nav {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        top: auto;
+        bottom: -56px;
+        transform: none;
+        z-index: 3;
     }
-    .featured-video video { object-fit: cover; }
+    .drops-prev { left: 16px; }
+    .drops-next { right: 16px; left: auto; }
+    .drops-nav svg { width: 20px; height: 20px; }
+    /* Reserve space below for the arrows + dots row */
+    .t-drops { padding-bottom: 64px; }
 
-    /* ---- 2b. REVIEWS — written rail ---- */
-    .written-wrapper { padding: 0 16px; }
+    /* ---- ISSUE 3: REVIEWS CAROUSEL (written rail) ---- */
+    .featured-video { max-height: 50vh; aspect-ratio: 4 / 5; }
+    .featured-video video { object-fit: cover; }
+    .written-wrapper { padding: 0 16px; position: relative; }
     .written-rail {
         gap: 14px;
-        padding-right: 24px;
+        padding: 4px 16px 8px;
+        margin: 0 -16px;
         scroll-padding-left: 16px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
     }
     .review-card {
-        flex: 0 0 280px;
-        width: 280px;
+        flex: 0 0 85vw;
+        width: 85vw;
+        max-width: 340px;
         padding: 20px;
         gap: 12px;
+        scroll-snap-align: start;
     }
     .review-card .rc-quote { font-size: 15px; }
-
-    /* ---- 3. SHOP GRID ---- */
-    /* Force 2-column on every phone width. Tighter gap + square-ish
-       image keeps each card under ~220px tall so 4 products are
-       visible per scroll. */
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
+    /* Show written-rail arrows on mobile too */
+    .written-wrapper .drops-nav {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        top: auto;
+        bottom: -56px;
+        transform: none;
     }
-    .product-image-wrapper,
-    .product-card .product-image-wrapper:has(.product-placeholder-tile) {
-        aspect-ratio: 1 / 1;
-        height: auto;
+    .written-wrapper .drops-prev { left: 16px; }
+    .written-wrapper .drops-next { right: 16px; left: auto; }
+    .t-reviews-written { padding-bottom: 64px; }
+
+    /* ---- CAROUSEL PAGINATION DOTS ----
+       Auto-injected by JS; one container per rail. */
+    .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 16px;
+        padding: 0 16px;
+    }
+    .carousel-dots button {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 244, 224, 0.35);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease;
+        /* Bigger touch target via transparent padding */
+        position: relative;
+    }
+    .carousel-dots button::before {
+        content: "";
+        position: absolute;
+        inset: -10px;
+    }
+    .carousel-dots button[aria-current="true"] {
+        background: #FF1B6B;
+        transform: scale(1.3);
+    }
+    /* Reviews section is on cream — invert default dot color */
+    .t-reviews .carousel-dots button { background: rgba(10, 10, 10, 0.2); }
+    .t-reviews .carousel-dots button[aria-current="true"] { background: #FF1B6B; }
+
+    /* ---- ISSUE 4: SHOP GRID ---- */
+    /* Per-spec OPTION B: 1-col below 480px, 2-col 480-767px */
+    .products-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        padding: 0 4px;
     }
     .product-card {
         font-size: 14px;
+        max-width: 100%;
+        box-sizing: border-box;
     }
+    .product-image-wrapper,
+    .product-card .product-image-wrapper:has(.product-placeholder-tile) {
+        aspect-ratio: 16 / 10;
+        height: auto;
+    }
+    .product-placeholder-tile { height: auto; min-height: 0; aspect-ratio: 16 / 10; }
     .product-card .product-name,
     .product-card .product-price,
-    .product-card .product-bottom { font-size: 13px; }
-    .product-card .add-to-cart-btn { padding: 8px 12px; font-size: 12px; }
-    /* Placeholder tile (when no real photo) shrinks too so it lines up
-       with .product-image-wrapper aspect ratio. */
-    .product-placeholder-tile { height: auto; min-height: 0; aspect-ratio: 1 / 1; }
+    .product-card .product-bottom { font-size: 14px; }
+    .product-card .add-to-cart-btn {
+        padding: 12px 16px;
+        font-size: 13px;
+        min-height: 44px;
+        width: 100%;
+        white-space: nowrap;
+    }
+    /* 2-col layout on bigger phones (480-767) */
+    @media (min-width: 480px) {
+        .products-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+        }
+        .product-image-wrapper,
+        .product-card .product-image-wrapper:has(.product-placeholder-tile) {
+            aspect-ratio: 1 / 1;
+        }
+        .product-placeholder-tile { aspect-ratio: 1 / 1; }
+        .product-card .add-to-cart-btn { padding: 10px 12px; font-size: 12px; }
+    }
+
+    /* ---- AUDIT B: Hero — clamp badges + AS SEEN ON row ---- */
+    .t-eyebrow,
+    .about-press .press-item { max-width: 100%; }
+    .about-press .press-logos { flex-wrap: wrap; gap: 8px; }
+    .about-press .press-item { font-size: 12px; padding: 6px 10px; }
+
+    /* ---- AUDIT C: Footer wordmark + flag row containment ---- */
+    .footer-wordmark {
+        font-size: clamp(48px, 16vw, 88px);
+        margin: 24px 0 16px;
+        word-break: break-word;
+    }
+    .t-flag-row {
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        max-width: 100%;
+    }
+    .footer-tiny {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+        padding: 18px 16px 0;
+    }
+
+    /* ---- AUDIT F: Touch target floor (44px min for buttons/links) ---- */
+    .t-cta, .add, .add-to-cart-btn, .filter-btn,
+    .drops-nav, .cart-btn, .mobile-cart-btn,
+    .footer-signup button, .empty-clear-btn {
+        min-height: 44px;
+    }
+
+    /* ---- AUDIT I: Mobile cart pill — visible without hamburger ----
+       The desktop cart link lives inside .nav-links which is hidden on
+       mobile. We add a compact magenta pill button next to the
+       hamburger so the cart drawer is one tap away. */
+    .mobile-cart-btn {
+        display: inline-flex !important;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        background: #FF1B6B;
+        color: #FFF4E0;
+        border: 2px solid #0A0A0A;
+        border-radius: 9999px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 800;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: transform 0.15s ease;
+    }
+    .mobile-cart-btn:hover { transform: scale(1.05); }
+    .mobile-cart-btn svg { width: 16px; height: 16px; }
+    .mobile-cart-btn .snipcart-items-count { font-weight: 900; }
+    /* Tighten nav so brand + cart + hamburger fit cleanly */
+    .nav-container { gap: 8px; padding-left: 12px; padding-right: 12px; }
+    .brand-group { gap: 8px; min-width: 0; }
+    .brand-wordmark { display: none; }
 }
+/* Mobile cart button hidden by default on desktop */
+.mobile-cart-btn { display: none; }
